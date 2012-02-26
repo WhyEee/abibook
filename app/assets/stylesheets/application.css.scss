@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_directory .
+*/
+
+@import "bootstrap.scss";
+
+body
+{
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.btn-nav
+{
+  margin-top: -8px !important;
+}
+
+.navbar-login
+{
+  color: #d3d3d3;
+  margin-top: 10px;
+
+  .user-info
+  {
+    padding-right: 5px;
+  }
+
+  .btn
+  {
+    margin-top: -5px;
+  }
+}
+
+ol.steps
+{
+  font: italic 1.5em Georgia, Times, serif;
+  color: #999999;
+  margin-top: 1em;
+  
+  p
+  {
+    font: normal 0.67em Arial, Helvetica, sans-serif;
+    color: #000000;
+  }
+}    
+
+@import "bootstrap/responsive-plus.scss";

@@ -1,0 +1,86 @@
+.hero-unit.dashboard
+  %h1 Übersicht
+  %p
+    Hier habt ihr immer im Blick, welche Aufgaben ihr schon erledigt habt und was noch zu tun ist.
+
+.row
+  .span4
+    .page-header
+      %h2 Mein Steckbrief
+
+    %table.table.table-striped.table-bordered
+      %tbody
+        %tr
+          %th Voller Name
+          %td Yannick Eckey
+        %tr
+          %th Geburtsdatum
+          %td 30. September 1993
+        %tr
+          %th Abiturfächer
+          %td
+            %ol
+              %li Mathe
+              %li Physik
+              %li Englisch
+              %li Sozialwissenschaften
+        %tr
+          %th Kinderfoto
+          %td noch nicht hochgeladen
+        %tr
+          %th Lebensmotto
+          %td ---
+        %tr
+          %th Berufswunsch
+          %td Softwarearchitekt
+        %tr
+          %th T-Shirt-Größe*
+          %td Größe L
+    = link_to 'Steckbrief bearbeiten', '#', class: 'btn btn-primary pull-right'
+    %p
+      %em * Natürlich kommt das nicht in die Zeitung, aber das Kreativ-Komitee braucht die Info ;)
+  .span4
+    .page-header
+      %h2 Meine Beiträge
+
+    .well
+      .dash 3
+      %p abgegebene Kommentare zu Stufenmitgliedern
+      %p
+        Wer freut sich nicht über einen netten Kommentar auf seiner Seite in der Abizeitung? Das sind Erinnerungen fürs ganze Leben...
+      = link_to 'Kommentar abgeben', '#', class: 'btn btn-primary pull-right'
+      %div{style: 'clear: right'}
+    .well
+      .dash 16
+      %p eingereichte Zitate aus dem Unterricht
+      %p Was wäre denn eine Abizeitung ohne gesammelte Sprüche? Also schickt uns alles, was ihr habt!
+      = link_to 'Zitat einreichen', '#', class: 'btn btn-primary pull-right'
+      %div{style: 'clear: right'}
+
+    .well
+      .dash 9
+      %p von 15 Votings abgeschlossen
+      .progress.progress-striped
+        .bar{style: 'width: 60%'}
+      %p Das Highlight jeder Abizeitung sind die Votings: Es bleibt bis zum Schluss spannend, wer das Rennen macht.
+      = link_to 'Jetzt voten', '#', class: 'btn btn-primary pull-right'
+      %div{style: 'clear: right'}
+  .span4
+    .page-header
+      %h2 Administration
+
+    .well
+      .dash 4
+      %p neue Benutzerkonten warten auf Freischaltung
+      %p Als Mitglied des Abizeitungs-Komitees kannst du andere Stufenmitglieder für die Nutzung dieser Seite freischalten.
+      = link_to 'Jetzt freischalten', '#', class: 'btn btn-primary pull-right'
+      %div{style: 'clear: right'}
+
+    .page-header
+      %h2 Neuigkeiten
+
+    %dl
+      %dt 24. Februar 2012:
+      %dd
+        Ab sofort könnt ihr diese Homepage (fast) im vollem Umfang nutzen.
+        Bis auf die Votings sind alle Funktionen uneingeschränkt verfügbar.

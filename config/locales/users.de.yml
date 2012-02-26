@@ -1,0 +1,10 @@
+de:
+  activerecord:
+    models:
+      user: Zugang
+    attributes:
+      user:
+        full_name: Voller Name
+        email: E-Mail-Adresse
+        password: Passwort
+        password_confirmation: Passwortbestätigung

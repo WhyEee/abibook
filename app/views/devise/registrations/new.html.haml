@@ -1,0 +1,30 @@
+.hero-unit.welcome
+  %h1 Willkommen!
+  %p
+    Auf dieser Homepage könnt ihr dem Abizeitungs-Komitee Inhalte für die Zeitung übermitteln.
+    %br/
+    Dazu müsst ihr euch zunächst registrieren und von einem Mitglied des Komitees freigeschaltet werden.
+
+.row
+  .span4
+    .well
+      %h2 So funktioniert's
+      %ol.steps
+        %li
+          %p Registriert euch über das nebenstehende Formular für einen Zugang zum internen Bereich.
+        %li
+          %p Ein Mitglied des Abizeitungs-Komitees überprüft, ob eure Angaben korrekt sind, und schaltet euren Zugang so schnell wie möglich frei.
+        %li
+          %p Sobald euer Zugang freigeschaltet ist, werdet ihr per E-Mail darüber informiert und könnt euch oben rechts mit euren gewählten Zugangsdaten einloggen.
+        %li
+          %p Jetzt könnt ihr in aller Ruhe euren Steckbrief vervollständigen, Kommentare zu anderen Stufenmitgliedern abgeben, an den Votings teilnehmen und eure gesammelten Lehrer- und Schülersprücke aus dem Unterricht einreichen.
+  .span8
+    = simple_form_for @user, :url => user_registration_path, :html => { :class => 'form-horizontal' } do |f|
+      %fieldset
+        %legend Neu registrieren
+        = f.input :full_name, :required => true
+        = f.input :email, :required => true
+        = f.input :password, :required => true
+        = f.input :password_confirmation, :required => true
+        .form-actions
+          = f.button :submit, :class => 'btn-large btn-primary'
