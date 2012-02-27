@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
+  belongs_to :student
+  enum_attr :role, %w(^user staff admin)
+  validates :full_name, :presence => true
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable
-
-  validates :full_name, :presence => true
 
   def active_for_authentication?
     super && !student_id.nil?
