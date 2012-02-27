@@ -11,7 +11,54 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223145333) do
+ActiveRecord::Schema.define(:version => 20120227220032) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "subject_id"
+    t.integer  "author_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["subject_id", "author_id"], :name => "index_comments_on_subject_id_and_author_id", :unique => true
+
+  create_table "quotes", :force => true do |t|
+    t.string   "category"
+    t.string   "course"
+    t.string   "term"
+    t.integer  "author_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "quotes", ["author_id"], :name => "index_quotes_on_author_id"
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.string   "first_name"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.string   "exam1"
+    t.string   "exam2"
+    t.string   "exam3"
+    t.string   "exam4"
+    t.string   "motto"
+    t.string   "career"
+    t.string   "shirt_size"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "students", ["name", "first_name"], :name => "index_students_on_name_and_first_name", :unique => true
+
+  create_table "teachers", :force => true do |t|
+    t.string   "name"
+    t.string   "gender"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,5 +80,26 @@ ActiveRecord::Schema.define(:version => 20120223145333) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "voting_id"
+    t.integer  "author_id"
+    t.integer  "male_id"
+    t.string   "male_type"
+    t.integer  "female_id"
+    t.string   "female_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "votes", ["author_id"], :name => "index_votes_on_author_id"
+  add_index "votes", ["voting_id", "author_id"], :name => "index_votes_on_voting_id_and_author_id", :unique => true
+
+  create_table "votings", :force => true do |t|
+    t.string   "question"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "subject_type"
+  end
 
 end
