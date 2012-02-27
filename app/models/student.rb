@@ -6,8 +6,8 @@ class Student < ActiveRecord::Base
   has_many :received_comments, :class_name => 'Comment', :foreign_key => :subject_id
   has_many :submitted_comments, :class_name => 'Comment', :foreign_key => :author_id
 
-  has_many :received_male_votes, :class_name => 'Vote', :foreign_key => :male_id, :as => :votable
-  has_many :received_female_votes, :class_name => 'Vote', :foreign_key => :female_id, :as => :votable
+  has_many :received_male_votes, :class_name => 'Vote', :foreign_key => :male_id, :as => :male
+  has_many :received_female_votes, :class_name => 'Vote', :foreign_key => :female_id, :as => :female
   has_many :submitted_votes, :class_name => 'Vote', :foreign_key => :author_id
 
   has_many :quotes, :foreign_key => :author_id
