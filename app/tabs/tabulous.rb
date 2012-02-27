@@ -54,17 +54,17 @@ Tabulous.setup do |config|
 
   config.tabs do
     [
-      #------------------------------------------------------------------------------------#
-      #    TAB NAME    |    DISPLAY TEXT    |    PATH    |    VISIBLE?    |    ENABLED?    #
-      #------------------------------------------------------------------------------------#
-        [ :dashboard_tab, '&Uuml;bersicht', root_path, true, true ],
-        [ :profile_tab, 'Steckbrief', "#", true, true],
-        [ :comments_tab, 'Kommentare', "#", true, true],
-        [ :quotes_tab, 'Zitate', "#", true, true],
-        [ :votings_tab, 'Votings', "#", true, true]
-      #------------------------------------------------------------------------------------#
-      #    TAB NAME    |    DISPLAY TEXT    |    PATH    |    VISIBLE?    |    ENABLED?    #
-      #------------------------------------------------------------------------------------#
+      #---------------------------------------------------------------------------------------------------#
+      #    TAB NAME          |    DISPLAY TEXT        |    PATH         |    VISIBLE?    |    ENABLED?    #
+      #---------------------------------------------------------------------------------------------------#
+      [    :dashboard_tab    ,    '&Uuml;bersicht'    ,    root_path    ,    true        ,    true        ],
+      [    :profile_tab      ,    'Steckbrief'        ,    root_path    ,    true        ,    true        ],
+      [    :comments_tab     ,    'Kommentare'        ,    "#"          ,    true        ,    true        ],
+      [    :quotes_tab       ,    'Zitate'            ,    "#"          ,    true        ,    true        ],
+      [    :votings_tab      ,    'Votings'           ,    "#"          ,    true        ,    true        ],
+      #---------------------------------------------------------------------------------------------------#
+      #    TAB NAME          |    DISPLAY TEXT        |    PATH         |    VISIBLE?    |    ENABLED?    #
+      #---------------------------------------------------------------------------------------------------#
     ]
   end
 
@@ -84,13 +84,13 @@ Tabulous.setup do |config|
 
   config.actions do
     [
-      #---------------------------------------------#
-      #    CONTROLLER    |    ACTION    |    TAB    #
-      #---------------------------------------------#
-        [ :dashboard, :all_actions, :dashboard_tab ]
-      #---------------------------------------------#
-      #    CONTROLLER    |    ACTION    |    TAB    #
-      #---------------------------------------------#
+      #--------------------------------------------------------------#
+      #    CONTROLLER    |    ACTION          |    TAB               #
+      #--------------------------------------------------------------#
+      [    :dashboard    ,    :all_actions    ,    :dashboard_tab    ],
+      #--------------------------------------------------------------#
+      #    CONTROLLER    |    ACTION          |    TAB               #
+      #--------------------------------------------------------------#
     ]
   end
 
@@ -107,9 +107,9 @@ Tabulous.setup do |config|
   # Tabulous expects every controller action to be associated with a tab.
   # When an action does not have an associated tab (or subtab), you can
   # instruct tabulous how to behave:
-  config.when_action_has_no_tab = :raise_error      # the default behavior
+  # config.when_action_has_no_tab = :raise_error      # the default behavior
   # config.when_action_has_no_tab = :do_not_render  # no tab navigation HTML will be generated
-  # config.when_action_has_no_tab = :render         # the tab navigation HTML will be generated,
+  config.when_action_has_no_tab = :render         # the tab navigation HTML will be generated,
                                                     # but no tab or subtab will be active
 
   #--------------------

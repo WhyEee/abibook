@@ -34,10 +34,10 @@
                 %span.user-info= current_user.full_name
                 = link_to "Logout", destroy_user_session_path, class: 'btn btn-danger', :method => :delete
             - else
-              = simple_form_for User.new, url: user_session_path, html: { class: 'navbar-search pull-right'}  do |f|
+              = simple_form_for User.new, url: user_session_path, html: { class: 'navbar-form pull-right'}  do |f|
                 = f.input_field :email, placeholder: "E-Mail-Adresse"
                 = f.input_field :password, placeholder: "Passwort", class: 'input-small'
-                = f.button :submit, "Login", class: 'btn btn-primary btn-nav'
+                = f.button :submit, "Login", class: 'btn btn-primary'
 
     .container
 
