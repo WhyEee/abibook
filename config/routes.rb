@@ -1,5 +1,10 @@
 Abibook::Application.routes.draw do
-  get "dashboard/index"
+
+  get '/steckbrief' => 'profile#edit', :as => :edit_profile
+  put '/steckbrief' => 'profile#update'
+
+  resources :quotes, :path => '/zitate', :path_names => { :new => 'neues-zitat', :edit => 'bearbeiten' }, :except => [:show]
+  resources :comments, :path => '/kommentare', :path_names => { :new => 'neuer-kommentar', :edit => 'bearbeiten' }, :except => [:show]
 
   devise_for :users, :skip => [:registrations, :passwords, :sessions]
   as :user do

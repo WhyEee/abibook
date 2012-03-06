@@ -26,7 +26,7 @@ gem 'haml'
 gem 'haml-rails'
 
 gem 'devise'
-gem 'enumerated_attribute'
+gem 'enumerated_attribute', :git => 'git://github.com/jeffp/enumerated_attribute.git'
 
 group :development do
   gem 'rails-footnotes'

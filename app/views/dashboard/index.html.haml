@@ -12,31 +12,31 @@
       %tbody
         %tr
           %th Voller Name
-          %td Yannick Eckey
+          %td= @s.full_name
         %tr
           %th Geburtsdatum
-          %td 30. September 1993
+          %td= l @s.date_of_birth, format: '%e. %B %Y'
         %tr
           %th Abiturfächer
           %td
             %ol
-              %li Mathe
-              %li Physik
-              %li Englisch
-              %li Sozialwissenschaften
+              %li= @s.exam1
+              %li= @s.exam2
+              %li= @s.exam3
+              %li= @s.exam4
         %tr
           %th Kinderfoto
           %td noch nicht hochgeladen
         %tr
           %th Lebensmotto
-          %td ---
+          %td= @s.motto
         %tr
           %th Berufswunsch
-          %td Softwarearchitekt
+          %td= @s.career
         %tr
           %th T-Shirt-Größe*
-          %td Größe L
-    = link_to 'Steckbrief bearbeiten', '#', class: 'btn btn-primary pull-right'
+          %td= @s.enums(:shirt_size).label(@s.shirt_size)
+    = link_to 'Steckbrief bearbeiten', edit_profile_path, class: 'btn btn-primary pull-right'
     %p
       %em * Natürlich kommt das nicht in die Zeitung, aber das Kreativ-Komitee braucht die Info ;)
   .span4
@@ -44,43 +44,51 @@
       %h2 Meine Beiträge
 
     .well
-      .dash 3
-      %p abgegebene Kommentare zu Stufenmitgliedern
+      .dash= @s.submitted_comments.count
+      - if @s.submitted_comments.count == 1
+        %p abgegebener Kommentar zu Stufenmitgliedern
+      - else
+        %p abgegebene Kommentare zu Stufenmitgliedern
       %p
         Wer freut sich nicht über einen netten Kommentar auf seiner Seite in der Abizeitung? Das sind Erinnerungen fürs ganze Leben...
-      = link_to 'Kommentar abgeben', '#', class: 'btn btn-primary pull-right'
+      = link_to 'Kommentar abgeben', comments_path, class: 'btn btn-primary pull-right'
       %div{style: 'clear: right'}
     .well
-      .dash 16
-      %p eingereichte Zitate aus dem Unterricht
+      .dash= @s.quotes.count
+      - if @s.quotes.count == 1
+        %p eingereichtes Zitat aus dem Unterricht
+      - else
+        %p eingereichte Zitate aus dem Unterricht
       %p Was wäre denn eine Abizeitung ohne gesammelte Sprüche? Also schickt uns alles, was ihr habt!
-      = link_to 'Zitat einreichen', '#', class: 'btn btn-primary pull-right'
+      = link_to 'Zitat einreichen', quotes_path, class: 'btn btn-primary pull-right'
       %div{style: 'clear: right'}
 
     .well
-      .dash 9
-      %p von 15 Votings abgeschlossen
+      .dash= @completed_votings
+      %p von #{@votings} Votings abgeschlossen
       .progress.progress-striped
-        .bar{style: 'width: 60%'}
+        .bar{style: "width: #{100.0*@completed_votings/@votings}%"}
       %p Das Highlight jeder Abizeitung sind die Votings: Es bleibt bis zum Schluss spannend, wer das Rennen macht.
-      = link_to 'Jetzt voten', '#', class: 'btn btn-primary pull-right'
+      = link_to 'Jetzt voten', '#', class: 'btn btn-primary pull-right disabled'
       %div{style: 'clear: right'}
   .span4
-    .page-header
-      %h2 Administration
+    - if current_user.not_user?
+      .page-header
+        %h2 Administration
 
-    .well
-      .dash= @inactive_users
-      %p neue Benutzerkonten warten auf Freischaltung
-      %p Als Mitglied des Abizeitungs-Komitees kannst du andere Stufenmitglieder für die Nutzung dieser Seite freischalten.
-      = link_to 'Jetzt freischalten', '#', class: 'btn btn-primary pull-right'
-      %div{style: 'clear: right'}
+      .well
+        .dash= @inactive_users
+        %p neue Benutzerkonten warten auf Freischaltung
+        %p Als Mitglied des Abizeitungs-Komitees kannst du andere Stufenmitglieder für die Nutzung dieser Seite freischalten.
+        = link_to 'Jetzt freischalten', '#', class: 'btn btn-primary pull-right'
+        %div{style: 'clear: right'}
 
     .page-header
       %h2 Neuigkeiten
 
     %dl
-      %dt 24. Februar 2012:
+      %dt 6. März 2012:
       %dd
-        Ab sofort könnt ihr diese Homepage (fast) im vollem Umfang nutzen.
-        Bis auf die Votings sind alle Funktionen uneingeschränkt verfügbar.
+        Die erste nutzbare Version dieser Seite ist online! <br />
+        Die Votings werden im Laufe der Woche freigeschaltet. Außerdem wird es noch einige
+        Schönheitskorrekturen geben, die euch die Arbeit erleichtern sollen.

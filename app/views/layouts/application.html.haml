@@ -31,7 +31,7 @@
             - if user_signed_in?
               = tabs
               .navbar-login.pull-right
-                %span.user-info= current_user.full_name
+                %span.user-info= current_user.student.full_name
                 = link_to "Logout", destroy_user_session_path, class: 'btn btn-danger', :method => :delete
             - else
               = simple_form_for User.new, url: user_session_path, html: { class: 'navbar-form pull-right'}  do |f|

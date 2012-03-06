@@ -2,9 +2,18 @@ de:
   activerecord:
     models:
       user: Zugang
+      quote: Zitat
+      comment: Kommentar
     attributes:
       user:
         full_name: Voller Name
         email: E-Mail-Adresse
         password: Passwort
         password_confirmation: Passwortbestätigung
+      quote:
+        course: Kurs
+        term: Halbjahr
+        content: Zitat
+      comment:
+        subject: Empfänger
+        content: Nachricht
