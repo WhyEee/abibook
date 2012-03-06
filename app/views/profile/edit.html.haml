@@ -1,0 +1,20 @@
+.page-header
+  %h1 Mein Steckbrief
+
+= simple_form_for @student, :url => edit_profile_path, :html => { :class => 'form-horizontal' } do |f|
+  %fieldset
+    %legend Unveränderliche Angaben
+    = f.input :full_name, :disabled => true, label: 'Voller Name'
+    = f.input :dob_formatted, :disabled => true, :as => :string, label: 'Geburtsdatum'
+    = f.input :exam1, :disabled => true, label: '1. Abiturfach'
+    = f.input :exam2, :disabled => true, label: '2. Abiturfach'
+    = f.input :exam3, :disabled => true, label: '3. Abiturfach'
+    = f.input :exam4, :disabled => true, label: '4. Abiturfach'
+  %fieldset
+    %legend Eigene Angaben
+    = f.input :career, label: 'Berufswunsch'
+    = f.input :motto, label: 'Lebensmotto'
+    = f.input :shirt_size, :collection => @student.enums(:shirt_size).select_options, :prompt => 'bitte wählen',
+              :label => 'T-Shirt-Größe', :hint => 'Natürlich kommt das nicht in die Zeitung, aber das Kreativ-Komitee braucht die Info ;)'
+  .form-actions
+    = f.button :submit, "Steckbrief aktualisieren", :class => 'btn-large btn-primary'

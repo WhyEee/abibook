@@ -1,0 +1,25 @@
+.page-header
+  %h1 Eingereichte Zitate
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID
+      %th Kurs
+      %th Halbjahr
+      %th Zitat
+      %th Aktionen
+  %tbody
+  - @quotes.each do |quote|
+    %tr
+      %td= quote.id
+      %td= quote.course
+      %td= quote.term
+      %td= quote.content
+      %td
+        = link_to 'Bearbeiten', edit_quote_path(quote), :class => 'btn btn-mini'
+        = link_to 'Löschen', quote, :confirm => 'Ganz sicher?', :method => :delete, :class => 'btn btn-mini btn-danger'
+
+%br
+
+= link_to 'Neues Zitat einreichen', new_quote_path, :class => 'btn btn-primary'

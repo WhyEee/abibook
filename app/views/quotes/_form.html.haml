@@ -1,0 +1,10 @@
+= simple_form_for @quote, :html => { :class => 'form-horizontal' } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :course
+    = f.input :term, :collection => %w(11.1 11.2 12.1 12.2 13.1 13.2)
+    = f.input :content, :input_html => { :class => 'span6' }
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to 'Abbrechen', quotes_path, :class => 'btn'
