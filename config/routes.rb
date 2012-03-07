@@ -6,6 +6,10 @@ Abibook::Application.routes.draw do
   resources :quotes, :path => '/zitate', :path_names => { :new => 'neues-zitat', :edit => 'bearbeiten' }, :except => [:show]
   resources :comments, :path => '/kommentare', :path_names => { :new => 'neuer-kommentar', :edit => 'bearbeiten' }, :except => [:show]
 
+  get '/admin/freischalten' => 'admin/activation#index', :as => :activations
+  get '/admin/freischalten/:id' => 'admin/activation#edit', :as => :edit_activations
+  put '/admin/freischalten/:id' => 'admin/activation#update'
+
   devise_for :users, :skip => [:registrations, :passwords, :sessions]
   as :user do
     get '/login' => 'devise/sessions#new', :as => :new_user_session

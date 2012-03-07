@@ -10,6 +10,7 @@ de:
         email: E-Mail-Adresse
         password: Passwort
         password_confirmation: Passwortbestätigung
+        student: Schüler
       quote:
         course: Kurs
         term: Halbjahr

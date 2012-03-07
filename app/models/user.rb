@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
   end
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :full_name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :full_name, :email, :password, :password_confirmation, :remember_me, :student_id
+
+  def to_param
+    "#{id}-#{full_name.parameterize}"
+  end
 end

@@ -1,0 +1,19 @@
+.page-header
+  %h1 Inaktive Benutzer
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID
+      %th Voller Name
+      %th E-Mail-Adresse
+      %th Aktionen
+  %tbody
+  - @users.each do |user|
+    %tr
+      %td= user.id
+      %td= user.full_name
+      %td= user.email
+      %td
+        = link_to 'Freischalten', edit_activations_path(user), :class => 'btn btn-mini btn-success'
+        = link_to 'Löschen', edit_activations_path(user), :confirm => 'Ganz sicher?', :method => :delete, :class => 'btn btn-mini btn-danger'
