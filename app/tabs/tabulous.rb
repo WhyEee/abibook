@@ -63,7 +63,7 @@ Tabulous.setup do |config|
       [    :quotes_tab       ,    'Zitate'            ,    quotes_path          ,    true        ,    true        ],
       [    :votings_tab      ,    'Votings'           ,    "#"          ,    true        ,    true        ],
       [    :admin_tab      ,    'Administration'           ,    "#"          ,    current_user.not_user?        ,    true        ],
-      [    :admin_activation_subtab      ,    'Zug&auml;nge freischalten'           ,    "#"          ,    true        ,    true        ],
+      [    :admin_activation_subtab      ,    'Zug&auml;nge freischalten'           ,    activations_path          ,    true        ,    true        ],
       [    :admin_stats_subtab      ,    'Statistiken einsehen'           ,    "#"          ,    true        ,    true        ],
       #---------------------------------------------------------------------------------------------------#
       #    TAB NAME          |    DISPLAY TEXT        |    PATH         |    VISIBLE?    |    ENABLED?    #
