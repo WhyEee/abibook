@@ -1,0 +1,45 @@
+.page-header
+  %h2= @voting.question
+
+- merker = ""
+- labels = %w(Erststimme Zweitstimme Drittstimme)
+- label_c = 0
+
+= simple_form_for @voting, html: {class: 'form-horizontal'} do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .span9
+        .row-fluid
+          .span6
+            .control-group
+              .controls
+                %h3 männlich
+            = f.simple_fields_for :votes, @votes do |fc|
+              = fc.input :male_id, label: labels[label_c] do
+                = fc.collection_select :male_id, @males, :id, :sortable_name, {:include_blank => true}, {class: 'span11'}
+              - merker += fc.input :female_id, label: labels[label_c] do
+                = fc.collection_select :female_id, @females, :id, :sortable_name, {:include_blank => true}, {class: 'span11'}
+              - label_c += 1
+            = f.input :male_priority, as: :radio, label: 'Punkteverteilung', collection: [['gewichtet',:weighted], ['gleichmäßig', :balanced]]
+          .span6
+            .control-group
+              .controls
+                %h3 weiblich
+            = merker.html_safe
+            = f.input :female_priority, as: :radio, label: 'Punkteverteilung', collection: [['gewichtet',:weighted], ['gleichmäßig', :balanced]]
+      .span3
+        .well
+          %h3 Erläuterung
+          %p Ihr habt in jeder Kategorie jeweils drei männliche und drei weibliche Stimmen.
+          %p
+            Ihr müsst aber nicht zwingend alle eure Stimmen vergeben. Gebt ihr beispielsweise nur eine Stimme ab,
+            erhält diese Stimme zum Ausgleich das dreifache Gewicht.
+          %p
+            Ihr habt außerdem die Wahl, ob alle eure Stimmen gleichwertig sein sollen, oder ob eure Erststimme mehr
+            Gewicht haben soll, als die anderen.
+  %div{style: 'clear: left'}
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to 'Abbrechen', quotes_path, :class => 'btn'

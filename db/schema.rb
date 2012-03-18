@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227220032) do
+ActiveRecord::Schema.define(:version => 20120315070011) do
 
   create_table "comments", :force => true do |t|
     t.integer  "subject_id"
@@ -88,18 +88,21 @@ ActiveRecord::Schema.define(:version => 20120227220032) do
     t.string   "male_type"
     t.integer  "female_id"
     t.string   "female_type"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "male_priority"
+    t.integer  "female_priority"
   end
 
   add_index "votes", ["author_id"], :name => "index_votes_on_author_id"
-  add_index "votes", ["voting_id", "author_id"], :name => "index_votes_on_voting_id_and_author_id", :unique => true
+  add_index "votes", ["voting_id", "author_id"], :name => "index_votes_on_voting_id_and_author_id"
 
   create_table "votings", :force => true do |t|
     t.string   "question"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "subject_type"
+    t.string   "hint"
   end
 
 end

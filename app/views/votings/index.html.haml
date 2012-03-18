@@ -1,0 +1,42 @@
+.page-header
+  %h2 Voting-Übersicht
+
+.row
+  .span6
+    %h3 Schüler-Votings
+    %table.table.table-striped.table-condensed
+      %thead
+        %tr
+          %th ID
+          %th Frage
+          %th Aktionen
+      %tbody
+      - @students.each do |voting|
+        %tr
+          %td= voting.id
+          %td= link_to voting.question, voting
+          %td
+            - if @compl_ids.include? voting.id
+              = link_to 'Antwort ändern', voting, :class => 'btn btn-mini btn-primary'
+            - else
+              = link_to 'Jetzt abstimmen', voting, :class => 'btn btn-mini btn-success'
+  .span6
+    %h3 Lehrer-Votings
+    %table.table.table-striped.table-condensed
+      %thead
+        %tr
+          %th ID
+          %th Frage
+          %th Aktionen
+      %tbody
+      - @teachers.each do |voting|
+        %tr
+          %td= voting.id
+          %td= link_to voting.question, voting
+          %td
+            - if @compl_ids.include? voting.id
+              = link_to 'Antwort ändern', voting, :class => 'btn btn-mini btn-primary'
+            - else
+              = link_to 'Jetzt abstimmen', voting, :class => 'btn btn-mini btn-success'
+
+%br

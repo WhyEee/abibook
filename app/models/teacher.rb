@@ -8,6 +8,10 @@ class Teacher < ActiveRecord::Base
     male_votes + female_votes
   end
 
+  def sortable_name
+    to_s
+  end
+
   def to_s
     is_male? ? "Herr #{name}" : "Frau #{name}"
   end

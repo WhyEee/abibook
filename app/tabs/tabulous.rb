@@ -61,7 +61,7 @@ Tabulous.setup do |config|
       [    :profile_tab      ,    'Steckbrief'        ,    edit_profile_path    ,    true        ,    true        ],
       [    :comments_tab     ,    'Kommentare'        ,    comments_path          ,    true        ,    true        ],
       [    :quotes_tab       ,    'Zitate'            ,    quotes_path          ,    true        ,    true        ],
-      [    :votings_tab      ,    'Votings'           ,    "#"          ,    true        ,    true        ],
+      [    :votings_tab      ,    'Votings'           ,    votings_path          ,    true        ,    true        ],
       [    :admin_tab      ,    'Administration'           ,    "#"          ,    current_user.not_user?        ,    true        ],
       [    :admin_activation_subtab      ,    'Zug&auml;nge freischalten'           ,    activations_path          ,    true        ,    true        ],
       [    :admin_stats_subtab      ,    'Statistiken einsehen'           ,    "#"          ,    true        ,    true        ],
@@ -94,6 +94,7 @@ Tabulous.setup do |config|
       [ :profile , :all_actions , :profile_tab ],
       [ :quotes , :all_actions , :quotes_tab ],
       [ :comments , :all_actions , :comments_tab ],
+      [ :votings , :all_actions , :votings_tab ],
       #--------------------------------------------------------------#
       #    CONTROLLER    |    ACTION          |    TAB               #
       #--------------------------------------------------------------#
